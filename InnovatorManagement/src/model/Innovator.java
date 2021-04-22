@@ -30,7 +30,7 @@ public class Innovator
 	
 	
 	
-	public String insertItem(int id, String name, String projname, String pprice, String pproject) 
+	public String insertInnovator(int id, String name, String projname, String pprice, String pproject) 
 	{ 
 		String output = ""; 
 		try
@@ -68,7 +68,7 @@ public class Innovator
 		
 	 }
 	
-		public String readItems() 
+		public String readInnovator() 
 		{ 
 			String output = ""; 
 			
@@ -128,7 +128,7 @@ public class Innovator
 		
 		//update
 		
-		public String updateItem(int id, String name, String projname, String pprice, String pproject)
+		public String updateInnovator(int id, String name, String projname, String pprice, String pproject)
 		
 		{ 
 			String output = "";
@@ -170,7 +170,7 @@ public class Innovator
 		
 			//delete
 		
-			public String deleteItem(String innovatorID) 
+			public String deleteInnovator(String innovatorID) 
 			{ 
 				String output = "";
 				
@@ -206,7 +206,17 @@ public class Innovator
 				
 				return output;
 				
-			} 
+			}
+
+
+
+
+			
+
+
+
+
+			
 } 
 	
 	
