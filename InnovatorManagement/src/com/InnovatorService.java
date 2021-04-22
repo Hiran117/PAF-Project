@@ -72,6 +72,24 @@ public class InnovatorService {
 			
 			return output; 
 		}
+		
+		//delete
+		
+		@DELETE
+		@Path("/") 
+		@Consumes(MediaType.APPLICATION_XML) 
+		@Produces(MediaType.TEXT_PLAIN) 
+		public String deleteInnovator(String innovatorData) 
+		{ 
+			//Convert the input string to an XML document
+			Document doc = Jsoup.parse(innovatorData, "", Parser.xmlParser()); 
+		 
+			//Read the value from the element <itemID>
+			String innovatorID = doc.select("innovatorID").text(); 
+			String output = innoobj.deleteInnovator(innovatorID); 
+			return output; 
+		}
+
 
 		
 				
