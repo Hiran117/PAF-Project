@@ -21,14 +21,14 @@ public class InnovatorService {
 	
 	 
 		private static final int String = 0;
-		Innovator innovatorObj = new Innovator(); 
+		Innovator innoobj = new Innovator(); 
 		
 		@GET
 		@Path("/Innovator") 
 		@Produces (MediaType.TEXT_HTML) 
 		public String readInnovator() 
 		{ 
-			return innovatorObj.readInnovator();  
+			return innoobj.readInnovator();  
 		}
 		
 		//insert operation
@@ -43,11 +43,36 @@ public class InnovatorService {
 									@FormParam("pproject") String pproject)
 							
 		{ 
-			String output = innovatorObj.insertInnovator(id, name,  projname,  pprice,  pproject); 
+			String output = innoobj.insertInnovator(id, name,  projname,  pprice,  pproject); 
 			return output; 
 		}
 		
 		
+		//update
+		@PUT
+		@Path("/Innovator") 
+		@Consumes(MediaType.APPLICATION_JSON) 
+		@Produces(MediaType.TEXT_PLAIN) 
+		
+		
+		public String updateInnovator(String innovatorData) 
+		{ 
+			//Convert the input string to a JSON object 
+			JsonObject innovatorObj = new JsonParser().parse(innovatorData).getAsJsonObject(); 
+		
+			//Read the values from the JSON object
+			int innovatorID = innovatorObj.get("innovatorID").getAsInt(); 
+			String innovatorName = innovatorObj.get("innovatorName").getAsString(); 
+			String projName = innovatorObj.get("projName").getAsString(); 
+			String price = innovatorObj.get("price").getAsString(); 
+			String project = innovatorObj.get("project").getAsString(); 
+			
+			
+			String output = innoobj.updateInnovator(innovatorID, innovatorName, projName, price, project); 
+			
+			return output; 
+		}
+
 		
 				
 		
