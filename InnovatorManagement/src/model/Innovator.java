@@ -42,7 +42,7 @@ public class Innovator
 			
 			
 			// create a prepared statement
-			String query = " insert into items "
+			String query = " insert into innovator "
 							+ "(`innovatorID`,`innovatorName`,`projName`,`price`,`project`)"
 							+ " values (?, ?, ?, ?, ?)"; 
 			
@@ -141,7 +141,7 @@ public class Innovator
 				{return "Error while connecting to the database for updating."; }
 				
 				// create a prepared statement
-				String query = "UPDATE items SET innovatorName=?,projName=?,price=?,project=? WHERE innovatorID=?";
+				String query = "UPDATE innovator SET innovatorName=?,projName=?,price=?,project=? WHERE innovatorID=?";
 										
 				PreparedStatement preparedStmt = con.prepareStatement(query); 
 				
@@ -166,7 +166,47 @@ public class Innovator
 			} 
 			
 			return output; 
-		 } 
+		 }
+		
+			//delete
+		
+			public String deleteItem(String innovatorID) 
+			{ 
+				String output = "";
+				
+				try
+				{ 
+					
+					Connection con = connect();
+					
+					
+					if (con == null) 
+					{return "Error while connecting to the database for deleting."; } 
+		 
+					// create a prepared statement
+					String query = "delete from innovator where innovatorID=?"; 
+		 
+					PreparedStatement preparedStmt = con.prepareStatement(query); 
+		 
+					// binding values
+		 
+					preparedStmt.setInt(1, Integer.parseInt(innovatorID)); 
+		 
+					// execute the statement
+					preparedStmt.execute(); 
+					con.close(); 
+		 
+					output = "Deleted successfully"; 
+				} 
+				catch (Exception e) 
+				{ 
+					output = "Error while deleting the item."; 
+					System.err.println(e.getMessage()); 
+				} 
+				
+				return output; 
+			} 
+} 
 	
 	
 	
@@ -180,4 +220,4 @@ public class Innovator
 	
 	
 
-}
+
