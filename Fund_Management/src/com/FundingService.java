@@ -39,4 +39,27 @@ public class FundingService {
 			return output;
 		}
 	
+		//Updation
+		@PUT
+		@Path("/")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.TEXT_PLAIN)
+		
+		public String updateFunder(String funderData) 
+		{
+			// Convert the input string to a JSON object
+			JsonObject fundObject = new JsonParser().parse(funderData).getAsJsonObject();
+
+			// Read the values from the JSON object
+			String funderID = fundObject.get("funderID").getAsString();
+			String fundAmount = fundObject.get("fundAmount").getAsString();
+			String name = fundObject.get("name").getAsString();
+			String email = fundObject.get("email").getAsString();
+			String cardNumber = fundObject.get("cardNumber").getAsString();
+			String fundReqDate = fundObject.get("fundReqDate").getAsString();
+			
+			String output = FundObj.updateFunder(funderID, fundAmount, name, email, cardNumber, fundReqDate);
+			return output;
+		}
+		
 }
