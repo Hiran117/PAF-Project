@@ -107,36 +107,69 @@ public class Funders {
 	
 	public String updateFunder(String funderID, String fundAmount, String name, String email, String cardNumber, String fundReqDate)
 	 {
-String output = "";
+		String output = "";
 
-try {
-	Connection con = connect();
-	if (con == null) {
-		return "Error while connecting to the database for updating.";
+		try {
+			Connection con = connect();
+			if (con == null) {
+				return "Error while connecting to the database for updating.";
 	}
-	// create a prepared statement
-	String query = "UPDATE Funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
-	PreparedStatement preparedStmt = con.prepareStatement(query);
-	// binding values
+			// create a prepared statement
+			String query = "UPDATE Funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			// binding values
 
-	preparedStmt.setString(1, fundAmount);
-	preparedStmt.setString(2, name);
-	preparedStmt.setString(3, email);
-	preparedStmt.setString(4, cardNumber);
-	preparedStmt.setString(5, fundReqDate);
-	preparedStmt.setInt(6, Integer.parseInt(funderID));
+				preparedStmt.setString(1, fundAmount);
+				preparedStmt.setString(2, name);
+				preparedStmt.setString(3, email);
+				preparedStmt.setString(4, cardNumber);
+				preparedStmt.setString(5, fundReqDate);
+				preparedStmt.setInt(6, Integer.parseInt(funderID));
 
-	// execute the statement
-	preparedStmt.execute();
-	con.close();
-	output = "Details Updated successfully.";
+				// execute the statement
+				preparedStmt.execute();
+				con.close();
+				output = "Details Updated successfully.";
 	 
-} catch (Exception e) {
-	 output = "Error in the data updation!."; 
-	 System.err.println(e.getMessage()); 
+		} catch (Exception e) {
+			output = "Error in the data updation!."; 
+			System.err.println(e.getMessage()); 
+		}
+		return output;
 }
-return output;
-}
+	
+	public String insertFunder(String fundAmount, String name, String email, String cardNumber, String fundReqDate) {
+		String output = "";
+
+		try {
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for inserting.";
+			}
+			// create a prepared statement
+			String query = "insert into funders (funderID,fundAmount,name,email,cardNumber,fundReqDate)" + "values (?,?,?,?,?,?)";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			// binding values
+			preparedStmt.setInt(1, 0);
+			preparedStmt.setString(2, fundAmount);
+			preparedStmt.setString(3, name);
+			preparedStmt.setString(4, email);
+			preparedStmt.setString(5, cardNumber);
+			preparedStmt.setString(6, fundReqDate);
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Inserted successfully";
+
+		} catch (Exception e) {
+			output = "Error while inserting the Funders.";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
 
 	
 }
