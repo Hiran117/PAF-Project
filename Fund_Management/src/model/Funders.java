@@ -9,10 +9,11 @@ import java.sql.ResultSet;
 
 public class Funders {
 
-	// A common method to connect to the DB
+		// A common method to connect to the DB
 
-	public Connection connect() {
-		Connection con = null;
+				public Connection connect() {
+					Connection con = null;
+					
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
