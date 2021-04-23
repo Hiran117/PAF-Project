@@ -24,5 +24,36 @@ public class Funders {
 		return con;
 	}
 
-	
+	public String insertFunder(String fundAmount, String name, String email, String cardNumber, String fundReqDate) {
+		String output = "";
+
+		try {
+			Connection con = connect();
+
+			if (con == null) {
+				return "Error while connecting to the database for inserting.";
+			}
+			// create a prepared statement
+			String query = "insert into funders (funderID,fundAmount,name,email,cardNumber,fundReqDate)" + "values (?,?,?,?,?,?)";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			// binding values
+			preparedStmt.setInt(1, 0);
+			preparedStmt.setString(2, fundAmount);
+			preparedStmt.setString(3, name);
+			preparedStmt.setString(4, email);
+			preparedStmt.setString(5, cardNumber);
+			preparedStmt.setString(6, fundReqDate);
+			// execute the statement
+			preparedStmt.execute();
+			con.close();
+
+			output = "Inserted successfully";
+
+		} catch (Exception e) {
+			output = "Error while inserting the Funders.";
+			System.err.println(e.getMessage());
+		}
+		return output;
+	}
 }
