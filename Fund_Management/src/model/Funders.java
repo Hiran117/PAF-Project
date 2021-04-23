@@ -104,4 +104,39 @@ public class Funders {
 		}
 		return output;
 	}
+	
+	public String updateFunder(String funderID, String fundAmount, String name, String email, String cardNumber, String fundReqDate)
+	 {
+String output = "";
+
+try {
+	Connection con = connect();
+	if (con == null) {
+		return "Error while connecting to the database for updating.";
+	}
+	// create a prepared statement
+	String query = "UPDATE Funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
+	PreparedStatement preparedStmt = con.prepareStatement(query);
+	// binding values
+
+	preparedStmt.setString(1, fundAmount);
+	preparedStmt.setString(2, name);
+	preparedStmt.setString(3, email);
+	preparedStmt.setString(4, cardNumber);
+	preparedStmt.setString(5, fundReqDate);
+	preparedStmt.setInt(6, Integer.parseInt(funderID));
+
+	// execute the statement
+	preparedStmt.execute();
+	con.close();
+	output = "Details Updated successfully.";
+	 
+} catch (Exception e) {
+	 output = "Error in the data updation!."; 
+	 System.err.println(e.getMessage()); 
+}
+return output;
+}
+
+	
 }
