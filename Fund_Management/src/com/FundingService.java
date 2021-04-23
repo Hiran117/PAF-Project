@@ -18,5 +18,15 @@ import org.jsoup.nodes.Document;
 public class FundingService {
 	
 		Funders FundObj = new Funders();
+		
+		@GET
+		@Path("/")
+		@Produces(MediaType.TEXT_HTML)
+		public String readFunders()
+		{
+		return FundObj.readFunders();
+		}
+		
+		
 	
 }
