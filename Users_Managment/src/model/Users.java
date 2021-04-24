@@ -1,6 +1,12 @@
 package model;
 
 import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class Users {
 
 	// A common method to connect to the DB
