@@ -24,7 +24,7 @@ public class Users {
 					}
 					return con;
 				}
-	
+	//insert
 				public String insertUser(String name, String email, String userType, String pw) {
 					String output = "";
 
@@ -57,6 +57,7 @@ public class Users {
 					return output;
 				}
 				
+				//read
 				public String readUsers() {
 					String output = "";
 					try {
@@ -102,6 +103,8 @@ public class Users {
 					return output;
 				}
 				
+				//update
+				
 				public String updateUser(String userID, String name, String email, String userType, String pw)
 				 {
 					String output = "";
@@ -133,6 +136,8 @@ public class Users {
 					}
 					return output;
 				 }
+				
+				//delete
 				
 				public String deleteUser(String userID) {
 					String output = "";
