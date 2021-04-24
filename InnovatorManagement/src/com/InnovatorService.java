@@ -19,6 +19,7 @@ import com.google.gson.JsonParser;
 
 import model.Innovator;
 
+//create path
 @Path("/inn") 
 
 
