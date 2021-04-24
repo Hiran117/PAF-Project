@@ -20,5 +20,4 @@
  <url-pattern>/my/*</url-pattern>
 </servlet-mapping>
   
-  
 </web-app>
