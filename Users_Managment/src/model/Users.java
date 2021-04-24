@@ -96,4 +96,37 @@ public class Users {
 					return output;
 				}
 				
+				public String updateUser(String userID, String name, String email, String userType, String pw)
+				 {
+					String output = "";
+
+					try {
+						Connection con = connect();
+						if (con == null) {
+							return "Error while connecting to the database for updating.";
+				}
+						// create a prepared statement
+						String query = "UPDATE users SET name=?,email=?,userType=?,pw=? WHERE userID=?";
+						PreparedStatement preparedStmt = con.prepareStatement(query);
+						// binding values
+
+							preparedStmt.setString(1, name);
+							preparedStmt.setString(2, email);
+							preparedStmt.setString(3, userType);
+							preparedStmt.setString(4, pw);
+							preparedStmt.setInt(5, Integer.parseInt(userID));
+
+							// execute the statement
+							preparedStmt.execute();
+							con.close();
+							output = "Details Updated successfully.";
+				 
+					} catch (Exception e) {
+						output = "Error in the data updation!."; 
+						System.err.println(e.getMessage()); 
+					}
+					return output;
+				 }
+				
+				
 }
