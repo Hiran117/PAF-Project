@@ -116,7 +116,7 @@ public class Funders {
 				return "Error while connecting to the database for updating.";
 	}
 			// create a prepared statement
-			String query = "UPDATE Funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
+			String query = "UPDATE funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 
