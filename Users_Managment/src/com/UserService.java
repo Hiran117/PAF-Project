@@ -13,6 +13,18 @@ import model.Users;
 	import org.jsoup.parser.*;
 	import org.jsoup.nodes.Document;
 
+@Path("/Users")
 public class UserService {
 
+	Users UsersObj = new Users();
+	//read
+	@GET
+	@Path("/")
+	@Produces(MediaType.TEXT_HTML)
+	public String readFunders()
+	{
+	return UsersObj.readUsers();
+	}
+	
+	
 }
