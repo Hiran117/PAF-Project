@@ -13,7 +13,7 @@ import model.Users;
 	import org.jsoup.parser.*;
 	import org.jsoup.nodes.Document;
 
-@Path("/Users")
+@Path("/User")
 public class UserService {
 
 	Users UsersObj = new Users();
