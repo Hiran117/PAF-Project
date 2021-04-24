@@ -25,7 +25,8 @@ public class Funders {
 		return con;
 	}
 
-	public String insertFunder(String fundAmount, String name, String email, String cardNumber, String fundReqDate) {
+		//insert funder		
+		public String insertFunder(String fundAmount, String name, String email, String cardNumber, String fundReqDate) {
 		String output = "";
 
 		try {
@@ -58,6 +59,7 @@ public class Funders {
 		return output;
 	}
 	
+		//read funder
 	public String readFunders() {
 		String output = "";
 		try {
@@ -105,6 +107,7 @@ public class Funders {
 		return output;
 	}
 	
+	//update
 	public String updateFunder(String funderID, String fundAmount, String name, String email, String cardNumber, String fundReqDate)
 	 {
 		String output = "";
@@ -138,7 +141,7 @@ public class Funders {
 		return output;
 	 }
 	
-
+	//delete
 	public String deleteFunder(String funderID) {
 		String output = "";
 		try {
