@@ -82,8 +82,7 @@ public class Funders {
 
 				// Add into the html table
 
-				output += "<tr><td><input id='hidFunderIDUpdate' name='hidFunderIDSUpdate' type='hidden' value='"
-						+ funderID + "'>" + funderID + "</td>";
+				output += "<tr><td>" + funderID + "</td>";
 				output += "<td>" + fundAmount + "</td>";
 				output += "<td>" + name + "</td>";
 				output += "<td>" + email + "</td>";
