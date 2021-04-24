@@ -51,4 +51,49 @@ public class Users {
 					return output;
 				}
 				
+				public String readUsers() {
+					String output = "";
+					try {
+						Connection con = connect();
+						if (con == null) {
+							return "Error while connecting to the database for reading.";
+						}
+						// Prepare the html table to be displayed
+						output = "<table border=\"1\"><tr><th>User ID</th><th>Name</th><th>Email</th><th>User Type</th><th>Password</th><th>Update</th><th>Remove</th></tr>";
+						String query = "select * from users";
+						Statement stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery(query);
+						// iterate through the rows in the result set
+						while (rs.next()) {
+
+							String userID = Integer.toString(rs.getInt("userID"));
+							String name = rs.getString("name");
+							String email = rs.getString("email");
+							String userType = rs.getString("userType");
+							String pw = rs.getString("pw");
+
+							// Add into the html table
+
+							output += "<tr><td>"+ userID + "</td>";
+							output += "<td>" + name + "</td>";
+							output += "<td>" + email + "</td>";
+							output += "<td>" + userType + "</td>";
+							output += "<td>" + pw + "</td>";
+
+							// buttons
+
+							output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+									+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-UserID='"
+									+ userID + "'>" + "</td></tr>";
+						}
+						con.close();
+						// Complete the html table
+						output += "</table>";
+					} catch (Exception e) {
+						output = "Error while reading the users.";
+						System.err.println(e.getMessage());
+					}
+					return output;
+				}
+				
 }
