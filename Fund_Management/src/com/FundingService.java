@@ -14,7 +14,7 @@ import org.jsoup.*;
 import org.jsoup.parser.*;
 import org.jsoup.nodes.Document;
 
-@Path("/Funders")
+@Path("/Funding")
 public class FundingService {
 	
 		Funders FundObj = new Funders();
