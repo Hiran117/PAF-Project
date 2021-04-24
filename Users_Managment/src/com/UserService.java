@@ -60,4 +60,20 @@ public class UserService {
 		return output;
 	}
 	
+	//Deletion
+	@DELETE
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_XML)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deleteUSer(String UserData) 
+	{
+		// Convert the input string to an XML document
+		Document doc = Jsoup.parse(UserData, "", Parser.xmlParser());
+
+		// Read the value from the element <innovationID>
+		String userID = doc.select("userID").text();
+		String output = UsersObj.deleteUser(userID);
+		return output;
+	}
+	
 }
