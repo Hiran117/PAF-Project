@@ -82,8 +82,7 @@ public class Funders {
 
 				// Add into the html table
 
-				output += "<tr><td><input id='hidFunderIDUpdate' name='hidFunderIDSUpdate' type='hidden' value='"
-						+ funderID + "'>" + funderID + "</td>";
+				output += "<tr><td>" + funderID + "</td>";
 				output += "<td>" + fundAmount + "</td>";
 				output += "<td>" + name + "</td>";
 				output += "<td>" + email + "</td>";
@@ -116,7 +115,7 @@ public class Funders {
 				return "Error while connecting to the database for updating.";
 	}
 			// create a prepared statement
-			String query = "UPDATE Funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
+			String query = "UPDATE funders SET fundAmount=?,name=?,email=?,cardNumber=?,fundReqDate=? WHERE funderID=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 
