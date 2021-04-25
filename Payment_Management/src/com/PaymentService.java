@@ -47,3 +47,6 @@ public class PaymentService {
 		
 		public String updatePayment_details(String paymentData) 
 		{		
+			
+	// Convert the input string to a JSON object
+		JsonObject paymentObject = new JsonParser().parse(paymentData).getAsJsonObject();
