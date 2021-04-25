@@ -27,3 +27,16 @@ public class PaymentService {
 	 { 
 		return paymentObj.readpayment_details();
 	 }
+	//Insertion
+		@POST
+		@Path("/")
+		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+		@Produces(MediaType.TEXT_PLAIN)
+		
+		public String insertPayment_details(@FormParam("name") String name, @FormParam("address") String address, @FormParam("email") String email, @FormParam("contact_number") String contact_number, @FormParam("card_name") String card_name, @FormParam("card_number") String card_number, @FormParam("expiry_date") String expiry_date, @FormParam("cvc_number") String cvc_number)
+		{
+			String output = paymentObj.insertPayment_details(name, address, email, contact_number, card_name, card_number, expiry_date, cvc_number);
+			return output;
+		}
+
+		
