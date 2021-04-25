@@ -50,3 +50,18 @@ public class PaymentService {
 			
 	// Convert the input string to a JSON object
 		JsonObject paymentObject = new JsonParser().parse(paymentData).getAsJsonObject();
+		
+	// Read the values from the JSON object
+		String payment_ID = paymentObject.get("payment_ID").getAsString();
+		String name = paymentObject.get("name").getAsString();
+		String address = paymentObject.get("address").getAsString();
+		String email = paymentObject.get("email").getAsString();
+		String contact_number = paymentObject.get("contact_number").getAsString();
+		String card_name = paymentObject.get("card_name").getAsString();
+		String card_number = paymentObject.get("card_number").getAsString();
+		String expiry_date = paymentObject.get("expiry_date").getAsString();
+		String cvc_number = paymentObject.get("cvc_number").getAsString();
+		
+		String output = paymentObj.updatePayment_details(payment_ID, name, address, email, contact_number, card_name, card_number, expiry_date, cvc_number);
+		return output;
+	}
