@@ -71,3 +71,9 @@ public class PaymentService {
 		@Consumes(MediaType.APPLICATION_XML)
 		@Produces(MediaType.TEXT_PLAIN)
 		public String deletePayment_details(String paymentData) 
+		
+		{
+			// Convert the input string to an XML document
+			Document doc = Jsoup.parse(paymentData, "", Parser.xmlParser());
+
+		
