@@ -75,5 +75,14 @@ public class PaymentService {
 		{
 			// Convert the input string to an XML document
 			Document doc = Jsoup.parse(paymentData, "", Parser.xmlParser());
+			
+
+			// Read the value from the element <payment_ID>
+			String payment_ID = doc.select("payment_ID").text();
+			String output = paymentObj.deletePayment_details(payment_ID);
+			return output;
+		}
+		
+	}
 
 		
