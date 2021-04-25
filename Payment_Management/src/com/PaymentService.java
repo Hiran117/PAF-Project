@@ -39,4 +39,11 @@ public class PaymentService {
 			return output;
 		}
 
+		//Updation
+		@PUT
+		@Path("/")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.TEXT_PLAIN)
 		
+		public String updatePayment_details(String paymentData) 
+		{		
