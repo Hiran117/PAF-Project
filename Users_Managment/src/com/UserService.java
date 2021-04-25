@@ -21,7 +21,7 @@ public class UserService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
-	public String readFunders()
+	public String readUsers()
 	{
 	return UsersObj.readUsers();
 	}
