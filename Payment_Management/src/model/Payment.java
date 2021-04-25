@@ -74,4 +74,68 @@ public class Payment {
 	         
 	         return output;
 	 }
-	 
+	// read payment_details
+		 public String readpayment_details()
+		 {
+			     String output = "";
+			     
+			     try
+			     {
+			    	 Connection con = connect();
+			    	 
+			    	 if (con == null)
+			         {return "Error while connecting to the database for reading.";}
+			    	 
+					// Prepare the html table to be displayed
+					output = "<table border=\"1\"><tr><th>Payment ID</th><th>Name</th><th>Adrress</th><th>Email</th><th>Contact Number</th><th>Card Name</th><th>Card Number</th><th>Expiry Date</th><th>CVC Number</th><th>Update</th><th>Remove</th></tr>";
+					
+					String query = "select * from payment_details";
+					Statement stmt = con.createStatement();
+					ResultSet rs = stmt.executeQuery(query);
+					
+					// iterate through the rows in the result set
+					while (rs.next()) {
+
+						String payment_ID = Integer.toString(rs.getInt("payment_ID"));
+						String name = rs.getString("name");
+						String address = rs.getString("address");
+						String email = rs.getString("email");
+						String contact_number = rs.getString("contact_number");
+						String card_name = rs.getString("card_name");
+						String card_number = rs.getString("card_number");
+						String expiry_date = rs.getString("expiry_date");
+						String cvc_number = rs.getString("cvc_number");
+
+						// Add into the html table
+						output += "<tr><td>" + payment_ID + "</td>";
+						output += "<td>" + name + "</td>";
+						output += "<td>" + address + "</td>";
+						output += "<td>" + email + "</td>";
+						output += "<td>" + contact_number + "</td>";
+						output += "<td>" + card_name + "</td>";
+						output += "<td>" + card_number + "</td>";
+						output += "<td>" + expiry_date + "</td>";
+						output += "<td>" + cvc_number + "</td>";
+					
+
+						// buttons
+						output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+								+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-funderID='"
+								+ payment_ID + "'>" + "</td></tr>";
+					} 
+					
+					con.close();
+					
+					// Complete the html table
+					output += "</table>";
+					
+				}
+			    catch (Exception e)
+			     {
+					output = "Error while reading the payment details.";
+					System.err.println(e.getMessage());
+				}
+				return output; 
+			    	 
+		 }
+		
