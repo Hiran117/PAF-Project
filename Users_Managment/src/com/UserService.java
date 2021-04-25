@@ -17,10 +17,11 @@ import model.Users;
 public class UserService {
 
 	Users UsersObj = new Users();
-	//read
+	//read users
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
+	
 	public String readUsers()
 	{
 	return UsersObj.readUsers();
