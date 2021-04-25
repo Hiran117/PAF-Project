@@ -138,4 +138,40 @@ public class Payment {
 				return output; 
 			    	 
 		 }
-		
+		//update payment details
+			public String updatePayment_details(String payment_ID, String name, String address, String email, String contact_number, String card_name, String card_number, String expiry_date, String cvc_number)
+			 {
+				String output = "";
+
+				try {
+					Connection con = connect();
+					if (con == null) {
+						return "Error while connecting to the database for updating.";
+			}
+					// create a prepared statement
+					String query = "UPDATE payment_details SET name=?,address=?,email=?,contact_number=?,card_name=?,card_number=?expiry_date=?,cvc_number=? WHERE payment_ID=?";
+					PreparedStatement preparedStmt = con.prepareStatement(query);
+					// binding values
+
+						preparedStmt.setString(1, name);
+						preparedStmt.setString(2, address);
+						preparedStmt.setString(3, email);
+						preparedStmt.setString(4, contact_number);
+						preparedStmt.setString(5, card_name);
+						preparedStmt.setString(6, card_number);
+						preparedStmt.setString(7, expiry_date);
+						preparedStmt.setString(8, cvc_number);
+						preparedStmt.setInt(9, Integer.parseInt(payment_ID));
+
+						// execute the statement
+						preparedStmt.execute();
+						con.close();
+						output = "Details Updated successfully.";
+			 
+				} catch (Exception e) {
+					output = "Error in the data updation!."; 
+					System.err.println(e.getMessage()); 
+				}
+				return output;
+			 }
+		         
