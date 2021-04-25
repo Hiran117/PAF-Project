@@ -65,3 +65,9 @@ public class PaymentService {
 		String output = paymentObj.updatePayment_details(payment_ID, name, address, email, contact_number, card_name, card_number, expiry_date, cvc_number);
 		return output;
 	}
+		//Deletion
+		@DELETE
+		@Path("/")
+		@Consumes(MediaType.APPLICATION_XML)
+		@Produces(MediaType.TEXT_PLAIN)
+		public String deletePayment_details(String paymentData) 
