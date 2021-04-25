@@ -174,4 +174,32 @@ public class Payment {
 				}
 				return output;
 			 }
-		         
+
+			//delete payment details
+			public String deletePayment_details(String payment_ID) {
+				String output = "";
+				try {
+					Connection con = connect();
+					if (con == null) {
+						return "Error while connecting to the database for deleting.";
+					}
+					// create a prepared statement
+					String query = "delete from payment_details where payment_ID=?";
+					PreparedStatement preparedStmt = con.prepareStatement(query);
+					// binding values
+					preparedStmt.setInt(1, Integer.parseInt(payment_ID));
+					// execute the statement
+					preparedStmt.execute();
+					con.close();
+					output = "Data has been Deleted."; 
+					
+				} catch (Exception e) {
+					
+					output = "Error while deleting.!"; 
+					System.err.println(e.getMessage()); 
+				}
+				return output;
+				}
+		
+
+	}
